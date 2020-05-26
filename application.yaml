@@ -1,0 +1,58 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: dotnetapi-dev
+  namespace: argocd
+spec:
+  project: default 
+  source: 
+    repoURL: https://github.com/pkhamdee/dotnet-api-cd.git
+    targetRevision: HEAD
+    path: overlays/dev
+  destination:
+    server: https://kubernetes.docker.internal:6443
+    namespace: dotnet-dev
+  syncPolicy:
+    automated:
+      prune: true
+
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: dotnetapi-stage
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/pkhamdee/dotnet-api-cd.git
+    targetRevision: HEAD
+    path: overlays/staging
+  destination:
+    server: https://kubernetes.docker.internal:6443
+    namespace: dotnet-stage
+  syncPolicy:
+    automated:
+      prune: true
+
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: dotnetapi-prod
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/pkhamdee/dotnet-api-cd.git
+    targetRevision: HEAD
+    path: overlays/prod
+  destination:
+    server: https://kubernetes.docker.internal:6443
+    namespace: dotnet-prod
+  syncPolicy:
+    automated:
+      prune: true
