@@ -1,0 +1,17 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+bases:
+- ../../base
+
+namespace: dotnet-prod
+
+commonLabels:
+  app: dotnet-api
+
+images:
+  - name: pkhamdee/dotnet-api
+    newTag: latest 
+
+patchesStrategicMerge:
+- custom-ingress.yaml 

@@ -3,15 +3,11 @@ kind: Ingress
 metadata:
   name: dotnet-api
   namespace: dotnet-dev
-  labels:
-    app: dotnet-api
-  annotations: 
-    kubernetes.io/ingress.class: contour
 spec:
   rules:
-  - host: dotnetapi.k8s.local
+  - host: dotnetapi-dev.k8s.local
     http:
       paths:
       - backend:
           serviceName: dotnet-api
-          servicePort: 80 
+          servicePort: 80
