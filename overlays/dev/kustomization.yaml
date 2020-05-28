@@ -11,7 +11,7 @@ commonLabels:
 
 images:
   - name: pkhamdee/dotnet-api
-    newTag: 1.0.0 
+    newTag: 2.2.2
 
 patchesStrategicMerge:
 - custom-ingress.yaml 
