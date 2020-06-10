@@ -1,0 +1,18 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: dotnetapi-dev
+  namespace: argocd
+spec:
+  project: default 
+  source: 
+    repoURL: https://github.com/pkhamdee/dotnet-api-cd.git
+    targetRevision: HEAD
+    path: overlays/dev
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: dotnet-dev
+  syncPolicy:
+    automated:
+      prune: true

@@ -5,7 +5,7 @@ metadata:
   namespace: dotnet-dev
 spec:
   rules:
-  - host: dotnetapi-dev.k8s.local
+  - host: dotnetapi-dev.tkg.pkhamdee.com
     http:
       paths:
       - backend:
